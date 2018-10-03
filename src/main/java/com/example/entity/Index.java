@@ -2,7 +2,7 @@ package com.example.entity;
 
 public class Index {
     private String roomid;
-    private String type;
+    private String typee;
     private String place;
     private String picture;
     private String peoplenum;
@@ -27,12 +27,12 @@ public class Index {
         this.roomid = roomid;
     }
 
-    public String getType() {
-        return type;
+    public String getTypee() {
+        return typee;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setTypee(String typee) {
+        this.typee = typee;
     }
 
     public String getPlace() {
