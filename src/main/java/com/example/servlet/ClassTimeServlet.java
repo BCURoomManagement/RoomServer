@@ -1,6 +1,8 @@
 package com.example.servlet;
 
+import com.example.dao.ClassTimeDao;
 import com.example.dao.IndexDao;
+import com.example.entity.ClassTime;
 import com.example.entity.Index;
 import net.sf.json.JSONArray;
 
@@ -14,23 +16,27 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/IndexServlet")
-public class IndexServlet extends HttpServlet {
-    public IndexServlet() {
+@WebServlet("/ClassTimeServlet")
+public class ClassTimeServlet extends HttpServlet {
+    public ClassTimeServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
-    private List<Index> list = new ArrayList<Index>();
+    private List<ClassTime> list = new ArrayList<ClassTime>();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=UTF8");
         PrintWriter out = response.getWriter();
-        String te = new String(request.getParameter("te").getBytes("iso8859-1"),"UTF-8");
-        list = new IndexDao().getOneRoom(te);
+
+
+        int [] a=new int[]{0,0,0,1,1,0,0,0,0,0,0,0,0,0,0};
+
+        String b = "2018104";
+        list = new ClassTimeDao().gettime(b,a);
         System.out.println(list);
         if (list != null) {
             JSONArray ja = JSONArray.fromObject(list);
