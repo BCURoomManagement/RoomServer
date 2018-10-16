@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ClassTimeDao {
     DBUtil util = new DBUtil();
-    public List<Index> gettime(String date,int [] a) {
+    public List<Index> gettime(String typee,String date,int [] a) {
         String [] b = new String[] {"one","two","three","four","five","six","seven","eight","nine","ten","tone","ttwo","tthree","tfour"};
         String c = "";
         for(int i = 1 ; i<15 ; i++){
@@ -23,13 +23,14 @@ public class ClassTimeDao {
         System.out.println(c);
 
         String sql2 = c;
-        String sql = "SELECT * FROM UseRoom.classroom WHERE classroom.roomid IN (select roomid from UseRoom.usemode where data ="+date+sql2+")";
+        String sql = "SELECT * FROM UseRoom.classroom WHERE typee = ? and classroom.roomid IN (select roomid from UseRoom.usemode where  data ="+date+sql2+")";
         System.out.println(sql);
         Connection conn = util.getConnection();
         try {
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            ResultSet rs = pstmt.executeQuery();
 
+            pstmt.setString(1,typee);
+            ResultSet rs = pstmt.executeQuery();
             List<Index> list2 = new ArrayList<Index>();
             while (rs.next()) {
                 Index message2 = new Index();
