@@ -34,7 +34,7 @@ public class CanleServlet extends HttpServlet {
         String roomid = new String(request.getParameter("type").getBytes("iso8859-1"), "UTF-8");
         String data = new String(request.getParameter("Daydata").getBytes("iso8859-1"), "UTF-8");
         String aa = new String(request.getParameter("time").getBytes("iso8859-1"), "UTF-8");
-        String time = new String(request.getParameter("submission").getBytes("iso8859-1"), "UTF-8");
+        String submission = new String(request.getParameter("submission").getBytes("iso8859-1"), "UTF-8");
         String username = new String(request.getParameter("username").getBytes("iso8859-1"), "UTF-8");
 
 //        int [] a=new int[]{0,0,0,1,1,0,0,0,0,0,0,0,0,0,0};
@@ -48,7 +48,7 @@ public class CanleServlet extends HttpServlet {
 
 //        boolean t;
         new CanleDao().Canle(roomid, data, a);
-        new CanleDao().dels(username,time);
+        new CanleDao().dels(username,submission);
 //        if (list != null) {
 //            JSONArray ja = JSONArray.fromObject(list);
 //            out.print(ja);

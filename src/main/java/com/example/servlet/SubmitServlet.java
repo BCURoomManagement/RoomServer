@@ -1,6 +1,8 @@
 package com.example.servlet;
 
+import com.example.dao.ClassTimeDao;
 import com.example.dao.RecordDao;
+import com.example.dao.SubmitDao;
 import com.example.entity.Record;
 import net.sf.json.JSONArray;
 
@@ -28,17 +30,40 @@ public class SubmitServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=UTF8");
         PrintWriter out = response.getWriter();
-        boolean a;
-        String [] b = new String [] {"1","1","0","0","0","0","0","0","0","0","0","0","0","0"};
-        System.out.println(new RecordDao().chack(new RecordDao().gettime("112","20181018"),b));
-        if (new RecordDao().chack(new RecordDao().gettime("112","20181018"),b)){
-            a = new RecordDao().instertSubmit("ad","ss","20181019",b,"www","no","20181019");
-            System.out.println(a);
-            if (a != false) {
-                out.print("true");
-            } else {
+        boolean a,b;
+        String roomid = new String(request.getParameter("sroomid").getBytes("iso8859-1"),"UTF-8");
+        String data = new String(request.getParameter("sDaydata").getBytes("iso8859-1"),"UTF-8");
+        String aa = new String(request.getParameter("sClasstime").getBytes("iso8859-1"),"UTF-8");
+        String time = new String(request.getParameter("timestamp").getBytes("iso8859-1"),"UTF-8");
+        String username = new String(request.getParameter("username").getBytes("iso8859-1"),"UTF-8");
+        String use = new String(request.getParameter("use").getBytes("iso8859-1"),"UTF-8");
+        String phone = new String(request.getParameter("phone").getBytes("iso8859-1"),"UTF-8");
+        String ftime =new String(request.getParameter("ftime").getBytes("iso8859-1"),"UTF-8");
+        String ltime =new String(request.getParameter("ltime").getBytes("iso8859-1"),"UTF-8");
+//        String [] b = new String [] {"1","1","0","0","0","0","0","0","0","0","0","0","0","0"};
+
+        String b1 = aa.substring(2,aa.length());
+        String [] bb = b1.split(",");
+        int [] c = new ClassTimeDao().stt(bb);
+        for (int i = 0 ; i < bb.length;i++){
+            System.out.println(bb[i]);
+        }
+        System.out.println(new RecordDao().chack(new RecordDao().gettime(roomid,data),bb));
+        if (new RecordDao().chack(new RecordDao().gettime(roomid,data),bb)){
+
+            b = new SubmitDao().upad(roomid,data,c);
+            if(b==true){
+                a = new RecordDao().instertSubmit(username,phone,use,data,bb,roomid,"no",time,ftime,ltime);
+                if (a != false) {
+                    out.print("true");
+                } else {
+                    out.print("false");
+                }
+            }
+            else{
                 out.print("false");
             }
+
         }
         else {
             out.print("false");

@@ -29,7 +29,7 @@ public class IndexServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=UTF8");
         PrintWriter out = response.getWriter();
-        String te = new String(request.getParameter("te").getBytes("iso8859-1"),"UTF-8");
+        String te = new String(request.getParameter("type").getBytes("iso8859-1"),"UTF-8");
         list = new IndexDao().getOneRoom(te);
         System.out.println(list);
         if (list != null) {

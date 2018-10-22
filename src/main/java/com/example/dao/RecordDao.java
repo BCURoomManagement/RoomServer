@@ -1,6 +1,7 @@
 package com.example.dao;
 
 import com.example.entity.ClassTime;
+import com.example.entity.Reb;
 import com.example.entity.Record;
 import com.example.util.DBUtil;
 
@@ -14,38 +15,42 @@ import java.util.List;
 public class RecordDao {
     DBUtil util = new DBUtil();
 
-    public List<Record> getRecord(String uname) {
-
-        String sql = "select * from UseRoom.brecrord where username = ?";
+    public List<Reb> getRecord(String uname) {
+        String sql = "select classroom.* , brecrord.use,phone,data,pass,submission,ftime,ltime from UseRoom.brecrord,UseRoom.classroom where brecrord.username = ? and classroom.roomid in (select brecrord.roomid from UseRoom.brecrord where brecrord.username = ?) and classroom.roomid = brecrord.roomid";
         Connection conn = util.getConnection();
         try {
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, uname);
+            pstmt.setString(2, uname);
             ResultSet rs = pstmt.executeQuery();
 
-            List<Record> list = new ArrayList<Record>();
+            List<Reb> list = new ArrayList<Reb>();
             while (rs.next()) {
-                Record message = new Record();
-                message.setUsername(rs.getString(1));
-                message.setUse(rs.getString(2));
-                message.setData(rs.getString(3));
-                message.setOne(rs.getString(4));
-                message.setTwo(rs.getString(5));
-                message.setThree(rs.getString(6));
-                message.setFour(rs.getString(7));
-                message.setFive(rs.getString(8));
-                message.setSix(rs.getString(9));
-                message.setSeven(rs.getString(10));
-                message.setEight(rs.getString(11));
-                message.setNine(rs.getString(12));
-                message.setTen(rs.getString(13));
-                message.setTone(rs.getString(14));
-                message.setTtwo(rs.getString(15));
-                message.setThree(rs.getString(16));
-                message.setTfour(rs.getString(17));
-                message.setRoomid(rs.getString(18));
-                message.setPass(rs.getString(19));
-                message.setSubmission(rs.getString(20));
+                Reb message = new Reb();
+                message.setRoomid(rs.getString(1));
+                message.setTypee(rs.getString(2));
+                message.setPlace(rs.getString(3));
+                message.setPicture(rs.getString(4));
+                message.setPeoplenum(rs.getString(5));
+                message.setWifi(rs.getString(6));
+                message.setProjector(rs.getString(7));
+                message.setRoomcomputer(rs.getString(8));
+                message.setDoorlock(rs.getString(9));
+                message.setWired(rs.getString(10));
+                message.setTouchtv(rs.getString(11));
+                message.setStucomputer(rs.getString(12));
+                message.setActdesks(rs.getString(13));
+                message.setAio(rs.getString(14));
+                message.setMeetingsys(rs.getString(15));
+                message.setAircolo(rs.getString(16));
+                message.setDesks(rs.getString(17));
+                message.setUse(rs.getString(18));
+                message.setPhone(rs.getString(19));
+                message.setData(rs.getString(20));
+                message.setPass(rs.getString(21));
+                message.setSubmission(rs.getString(22));
+                message.setFtime(rs.getString(23));
+                message.setLtime(rs.getString(24));
                 list.add(message);
             }
             conn.close();
@@ -56,32 +61,35 @@ public class RecordDao {
         return null;
     }
 
-    public boolean instertSubmit(String username, String use, String data, String a[], String roomid, String pass, String submission) {
+    public boolean instertSubmit(String username, String phone, String use, String data, String a[], String roomid, String pass, String submission,String ftime,String ltime) {
 
-        String sql = "insert into UseRoom.brecrord values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into UseRoom.brecrord values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection conn = util.getConnection();
         try {
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, username);
             pstmt.setString(2, use);
-            pstmt.setString(3, data);
-            pstmt.setString(4, a[0]);
-            pstmt.setString(5, a[1]);
-            pstmt.setString(6, a[2]);
-            pstmt.setString(7, a[3]);
-            pstmt.setString(8, a[4]);
-            pstmt.setString(9, a[5]);
-            pstmt.setString(10, a[6]);
-            pstmt.setString(11, a[7]);
-            pstmt.setString(12, a[8]);
-            pstmt.setString(13, a[9]);
-            pstmt.setString(14, a[10]);
-            pstmt.setString(15, a[11]);
-            pstmt.setString(16, a[12]);
-            pstmt.setString(17, a[13]);
-            pstmt.setString(18, roomid);
-            pstmt.setString(19, pass);
-            pstmt.setString(20, submission);
+            pstmt.setString(3, phone);
+            pstmt.setString(4, data);
+            pstmt.setString(5, a[0]);
+            pstmt.setString(6, a[1]);
+            pstmt.setString(7, a[2]);
+            pstmt.setString(8, a[3]);
+            pstmt.setString(9, a[4]);
+            pstmt.setString(10, a[5]);
+            pstmt.setString(11, a[6]);
+            pstmt.setString(12, a[7]);
+            pstmt.setString(13, a[8]);
+            pstmt.setString(14, a[9]);
+            pstmt.setString(15, a[10]);
+            pstmt.setString(16, a[11]);
+            pstmt.setString(17, a[12]);
+            pstmt.setString(18, a[13]);
+            pstmt.setString(19, roomid);
+            pstmt.setString(20, pass);
+            pstmt.setString(21, submission);
+            pstmt.setString(22, ftime);
+            pstmt.setString(23, ltime);
             if (pstmt.executeUpdate() > 0) {
                 conn.close();
                 return true;
@@ -136,9 +144,6 @@ public class RecordDao {
     }
 
     public boolean chack(List<ClassTime> list, String a[]) {
-
-            System.out.println(list.get(0).getTthree());
-
 
             if (list.get(0).getOne().equals("1") && list.get(0).getOne().equals(a[0])) {
                 return false;

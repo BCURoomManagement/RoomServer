@@ -3,6 +3,7 @@ package com.example.entity;
 public class Record {
     private String username;
     private String use;
+    private String phone;
     private String data;
     private String one;
     private String two;
@@ -21,6 +22,32 @@ public class Record {
     private String roomid;
     private String pass;
     private String submission;
+    private String ltime;
+    private String ftime;
+
+    public String getLtime() {
+        return ltime;
+    }
+
+    public void setLtime(String ltime) {
+        this.ltime = ltime;
+    }
+
+    public String getFtime() {
+        return ftime;
+    }
+
+    public void setFtime(String ftime) {
+        this.ftime = ftime;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
     public String getRoomid() {
         return roomid;

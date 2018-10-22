@@ -1,6 +1,7 @@
 package com.example.servlet;
 
 import com.example.dao.RecordDao;
+import com.example.entity.Reb;
 import com.example.entity.Record;
 import net.sf.json.JSONArray;
 
@@ -23,7 +24,7 @@ public class RecordServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
-    private List<Record> list = new ArrayList<Record>();
+    private List<Reb> list = new ArrayList<Reb>();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
