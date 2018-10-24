@@ -31,7 +31,7 @@ public class CanleServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF8");
         PrintWriter out = response.getWriter();
 
-        String roomid = new String(request.getParameter("type").getBytes("iso8859-1"), "UTF-8");
+        String roomid = new String(request.getParameter("roomid").getBytes("iso8859-1"), "UTF-8");
         String data = new String(request.getParameter("Daydata").getBytes("iso8859-1"), "UTF-8");
         String aa = new String(request.getParameter("time").getBytes("iso8859-1"), "UTF-8");
         String submission = new String(request.getParameter("submission").getBytes("iso8859-1"), "UTF-8");
