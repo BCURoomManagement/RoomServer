@@ -1,5 +1,7 @@
 package com.example.entity;
 
+//教室信息实例
+
 public class Index {
     private String roomid;
     private String typee;

@@ -1,5 +1,6 @@
 package com.example.entity;
 
+//登录信息实例
 public class Logn {
     private String username;
     private String password;
@@ -18,9 +19,6 @@ public class Logn {
         this.studentnumber = studentnumber;
     }
 
-
-
-
     public String getDepartment() {
         return department;
     }
@@ -28,7 +26,6 @@ public class Logn {
     public void setDepartment(String department) {
         this.department = department;
     }
-
 
     public String getUsername() {
         return username;

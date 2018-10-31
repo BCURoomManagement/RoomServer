@@ -16,7 +16,7 @@ public class RecordDao {
     DBUtil util = new DBUtil();
 
     public List<Reb> getRecord(String uname) {
-        String sql = "select classroom.* , brecrord.use,phone,data,pass,submission,ftime,ltime from UseRoom.brecrord,UseRoom.classroom where brecrord.username = ? and classroom.roomid in (select brecrord.roomid from UseRoom.brecrord where brecrord.username = ?) and classroom.roomid = brecrord.roomid";
+        String sql = "select classroom.* , brecrord.use,phone,data,pass,submission,ftime,ltime from UseRoom.brecrord,UseRoom.classroom where brecrord.username = ? and classroom.roomid in (select brecrord.roomid from UseRoom.brecrord where brecrord.username = ?) and classroom.roomid = brecrord.roomid order by submission DESC ";
         Connection conn = util.getConnection();
         try {
             PreparedStatement pstmt = conn.prepareStatement(sql);

@@ -1,5 +1,7 @@
 package com.example.entity;
 
+//上课时间表实例
+
 public class ClassTime {
     private String roomid;
     private String data;

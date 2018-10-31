@@ -42,7 +42,7 @@ public class CanleDao {
     }
 
     public boolean dels(String username, String time) {
-        String sql = "delete * from UseRoom.brecrord where username = ? and submission = ?";
+        String sql = "delete from UseRoom.brecrord where username = ? and submission = ?";
         System.out.println(sql);
         Connection conn = util.getConnection();
         try {
