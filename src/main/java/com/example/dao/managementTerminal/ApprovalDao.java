@@ -1,6 +1,5 @@
 package com.example.dao.managementTerminal;
 
-import com.example.entity.userTerminal.Index;
 import com.example.entity.userTerminal.Record;
 import com.example.util.DBUtil;
 
@@ -71,7 +70,7 @@ public class ApprovalDao {
 
     public List<Record> getAllApproval() {
 
-        String sql = "select * from UseRoom.brecrord order by submission desc ";
+        String sql = "select * from UseRoom.brecrord order by submission desc";
         Connection conn = util.getConnection();
         try {
             PreparedStatement pstmt = conn.prepareStatement(sql);

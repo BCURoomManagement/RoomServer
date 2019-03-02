@@ -142,6 +142,46 @@ public class RecordDao {
         return null;
     }
 
+    public String gettime2(String roomid, String date) {
+        String a = "[";
+        String sql = "select roomid,one,two,three,four,five,six,seven,eight,nine,ten,tone,ttwo,tthree,tfour from UseRoom.usemode where roomid = ? and data = ?";
+        System.out.println(sql);
+        Connection conn = util.getConnection();
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+
+            pstmt.setString(1, roomid);
+            pstmt.setString(2, date);
+            ResultSet rs = pstmt.executeQuery();
+            List<ClassTime> list = new ArrayList<ClassTime>();
+            while (rs.next()) {
+                ClassTime message = new ClassTime();
+                message.setRoomid(rs.getString(1));
+                message.setOne(rs.getString(2));
+                message.setTwo(rs.getString(3));
+                message.setThree(rs.getString(4));
+                message.setFour(rs.getString(5));
+                message.setFive(rs.getString(6));
+                message.setSix(rs.getString(7));
+                message.setSeven(rs.getString(8));
+                message.setEight(rs.getString(9));
+                message.setNine(rs.getString(10));
+                message.setTen(rs.getString(11));
+                message.setTone(rs.getString(12));
+                message.setTtwo(rs.getString(13));
+                message.setTthree(rs.getString(14));
+                message.setTfour(rs.getString(15));
+                list.add(message);
+            }
+            conn.close();
+            a=a+list.get(0).getOne()+","+list.get(0).getTwo()+","+list.get(0).getThree()+","+list.get(0).getFour()+","+list.get(0).getFive()+","+list.get(0).getSix()+","+list.get(0).getSeven()+","+list.get(0).getEight()+","+list.get(0).getNine()+","+list.get(0).getTen()+","+list.get(0).getTone()+","+list.get(0).getTtwo()+","+list.get(0).getTthree()+","+list.get(0).getTfour()+"]";
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return a;
+    }
     public boolean chack(List<ClassTime> list, String a[]) {
 
             if (list.get(0).getOne().equals("1") && list.get(0).getOne().equals(a[0])) {

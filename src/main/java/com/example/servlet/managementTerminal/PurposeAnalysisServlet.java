@@ -57,11 +57,11 @@ public class PurposeAnalysisServlet extends HttpServlet {
         JSONArray jsonarray = new JSONArray();
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("roomid",roomid);
-        jsonObject.put("a",a1);
-        jsonObject.put("b",b1);
-        jsonObject.put("c",c1);
-        jsonObject.put("d",d1);
-        jsonObject.put("e",e1);
+        jsonObject.put("a",a);
+        jsonObject.put("b",b);
+        jsonObject.put("c",c);
+        jsonObject.put("d",d);
+        jsonObject.put("e",e);
         jsonObject.put("sum",sum);
         jsonarray.add(jsonObject);
 

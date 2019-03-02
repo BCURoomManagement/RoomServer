@@ -16,6 +16,9 @@ public class ChangeStatusDao {
             if (a[i] == 1) {
                 c = c + " , " + b[i] + "=1";
             }
+            if (a[i] == 0) {
+                c = c + " , " + b[i] + "=0";
+            }
         }
         String c2 = c.substring(3, c.length());
         System.out.println(c);

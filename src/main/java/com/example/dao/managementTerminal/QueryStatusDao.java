@@ -50,15 +50,16 @@ public class QueryStatusDao {
         return null;
     }
     public List<ClassTime> getStatusByRoom(String data,String roomid) {
-        int datali = Integer.parseInt(data)+6;
-        String datal = String.valueOf(datali);
-        String sql = "select * from UseRoom.usemode where ?<=data and data<=? and roomid = ? order by roomid desc ";
+        //int datali = Integer.parseInt(data)+6;
+        //String datal = String.valueOf(datali);
+        //String sql = "select * from UseRoom.usemode where ?<=data and data<=? and roomid = ? order by roomid desc ";
+        String sql = "select * from UseRoom.usemode where data=? and roomid = ? order by roomid desc ";
         Connection conn = util.getConnection();
         try {
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1,data);
-            pstmt.setString(2,datal);
-            pstmt.setString(3,roomid);
+            //pstmt.setString(2,datal);
+            pstmt.setString(2,roomid);
             ResultSet rs = pstmt.executeQuery();
 
             List<ClassTime> list = new ArrayList<ClassTime>();

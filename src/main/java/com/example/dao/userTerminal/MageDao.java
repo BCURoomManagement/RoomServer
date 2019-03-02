@@ -23,8 +23,9 @@ public class MageDao {
             List<Mage> list = new ArrayList<Mage>();
             while (rs.next()) {
                 Mage message = new Mage();
-                message.setMassage(rs.getString(1));
-                message.setTime(rs.getString(2));
+                message.setId(rs.getString(1));
+                message.setMassage(rs.getString(2));
+                message.setTime(rs.getString(3));
                 list.add(message);
             }
             conn.close();
