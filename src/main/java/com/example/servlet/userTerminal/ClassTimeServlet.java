@@ -32,17 +32,20 @@ public class ClassTimeServlet extends HttpServlet {
         String typ = new String(request.getParameter("type").getBytes("iso8859-1"),"UTF-8");
         String b = new String(request.getParameter("Daydata").getBytes("iso8859-1"),"UTF-8");
         String aa = new String(request.getParameter("time").getBytes("iso8859-1"),"UTF-8");
-        String typp = typ.substring(1,2);
-        System.out.println(typp+"typp");
+        //String typp = typ.substring(1,2);
+        System.out.println(typ+"typp");
 //        int [] a=new int[]{0,0,0,1,1,0,0,0,0,0,0,0,0,0,0};
 
 //        String b = "2018104";
         String b1 = aa.substring(1,aa.length()-1);
         String [] bb = b1.split(",");
+        for (int i =0 ;i<bb.length;i++){
+            System.out.println(bb[i]+",");
+        }
 
         int [] a = new ClassTimeDao().stt(bb);
 
-        list = new ClassTimeDao().gettime(typp,b,a);
+        list = new ClassTimeDao().gettime(typ,b,a);
         System.out.println(list);
         if (list != null) {
             JSONArray ja = JSONArray.fromObject(list);
