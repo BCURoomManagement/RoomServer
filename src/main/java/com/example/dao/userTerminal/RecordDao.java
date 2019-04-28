@@ -15,7 +15,7 @@ public class RecordDao {
     DBUtil util = new DBUtil();
 
     public List<Reb> getRecord(String uname) {
-        String sql = "select classroom.* , brecrord.use,phone,data,pass,submission,ftime,ltime from UseRoom.brecrord,UseRoom.classroom where brecrord.username = ? and classroom.roomid in (select brecrord.roomid from UseRoom.brecrord where brecrord.username = ?) and classroom.roomid = brecrord.roomid order by submission DESC ";
+        String sql = "select classroom.* , brecrord.use,phone,data,pass,submission,ftime,ltime,noinf from UseRoom.brecrord,UseRoom.classroom where brecrord.username = ? and classroom.roomid in (select brecrord.roomid from UseRoom.brecrord where brecrord.username = ?) and classroom.roomid = brecrord.roomid order by submission DESC ";
         Connection conn = util.getConnection();
         try {
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -50,6 +50,7 @@ public class RecordDao {
                 message.setSubmission(rs.getString(22));
                 message.setFtime(rs.getString(23));
                 message.setLtime(rs.getString(24));
+                message.setNoinf(rs.getString(25));
                 list.add(message);
             }
             conn.close();
@@ -62,7 +63,7 @@ public class RecordDao {
 
     public boolean instertSubmit(String username, String phone, String use, String data, String a[], String roomid, String pass, String submission,String ftime,String ltime) {
 
-        String sql = "insert into UseRoom.brecrord values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into UseRoom.brecrord values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection conn = util.getConnection();
         try {
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -89,6 +90,7 @@ public class RecordDao {
             pstmt.setString(21, submission);
             pstmt.setString(22, ftime);
             pstmt.setString(23, ltime);
+            pstmt.setString(24, null);
             if (pstmt.executeUpdate() > 0) {
                 conn.close();
                 return true;

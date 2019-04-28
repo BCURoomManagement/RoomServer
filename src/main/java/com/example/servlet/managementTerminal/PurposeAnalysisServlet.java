@@ -32,19 +32,19 @@ public class PurposeAnalysisServlet extends HttpServlet {
         list = new PurposeAnalysisDao().getPurposeAnalysis(data,roomid);
         for (int i=0 ;i<list.size();i++)
         {
-            if (list.get(i).getUse().equals("a")){
+            if (list.get(i).getUse().equals("0")){
                 a++;
             }
-            if (list.get(i).getUse().equals("b")){
+            if (list.get(i).getUse().equals("1")){
                 b++;
             }
-            if (list.get(i).getUse().equals("c")){
+            if (list.get(i).getUse().equals("2")){
                 c++;
             }
-            if (list.get(i).getUse().equals("d")){
+            if (list.get(i).getUse().equals("3")){
                 d++;
             }
-            if (list.get(i).getUse().equals("e")){
+            if (list.get(i).getUse().equals("4")){
                 e++;
             }
         }

@@ -25,6 +25,7 @@ public class Reb {
     private String meetingsys;
     private String aircolo;
     private String desks;
+    private String noinf;
 
     public String getSubmission() {
         return submission;
@@ -217,5 +218,13 @@ public class Reb {
 
     public void setDesks(String desks) {
         this.desks = desks;
+    }
+
+    public String getNoinf() {
+        return noinf;
+    }
+
+    public void setNoinf(String noinf) {
+        this.noinf = noinf;
     }
 }

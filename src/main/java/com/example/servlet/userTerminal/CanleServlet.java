@@ -38,8 +38,11 @@ public class CanleServlet extends HttpServlet {
 //        String b = "20181018";
         String b1 = aa.substring(1, aa.length() - 1);
         String[] bb = b1.split(",");
-//
+
         int[] a = new ClassTimeDao().stt(bb);
+        for (int i=0;i<a.length;i++){
+            System.out.println(a[i]+"aa");
+        }
 //        String c = "112";
 
 //        boolean t;

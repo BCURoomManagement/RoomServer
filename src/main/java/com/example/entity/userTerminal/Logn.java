@@ -11,6 +11,20 @@ public class Logn {
     private String department;
     private String studentnumber;
 
+    @Override
+    public String toString() {
+        return "Logn{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", openid='" + openid + '\'' +
+                ", permission='" + permission + '\'' +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", department='" + department + '\'' +
+                ", studentnumber='" + studentnumber + '\'' +
+                '}';
+    }
+
     public String getStudentnumber() {
         return studentnumber;
     }

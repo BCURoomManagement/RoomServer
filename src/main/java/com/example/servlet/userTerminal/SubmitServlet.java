@@ -49,7 +49,7 @@ public class SubmitServlet extends HttpServlet {
 
             b = new SubmitDao().upad(roomid,data,c);
             if(b==true){
-                a = new RecordDao().instertSubmit(username,phone,use,data,bb,roomid,"no",time,ftime,ltime);
+                a = new RecordDao().instertSubmit(username,phone,use,data,bb,roomid,"pending",time,ftime,ltime);
                 if (a != false) {
                     out.print("true");
                 } else {

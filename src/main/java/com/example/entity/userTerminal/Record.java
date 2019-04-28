@@ -24,6 +24,15 @@ public class Record {
     private String submission;
     private String ltime;
     private String ftime;
+    private String noinf;
+
+    public String getNoinf() {
+        return noinf;
+    }
+
+    public void setNoinf(String noinf) {
+        this.noinf = noinf;
+    }
 
     public String getLtime() {
         return ltime;

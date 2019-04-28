@@ -19,9 +19,9 @@ public class CanleDao {
             }
         }
         String c2 = c.substring(3, c.length());
-        System.out.println(c);
+        //System.out.println(c);
         String sql = "update UseRoom.usemode set " + c2 + " where roomid = ? and data = ?";
-        System.out.println(sql);
+        System.out.print(sql+"cccccc");
         Connection conn = util.getConnection();
         try {
             PreparedStatement pstmt = conn.prepareStatement(sql);
