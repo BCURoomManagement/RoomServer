@@ -19,7 +19,7 @@ public class SubmitDao {
         }
         String c2 = c.substring(3, c.length());
         System.out.println(c);
-        String sql = "update UseRoom.usemode set " + c2 + " where roomid = ? and data = ?";
+        String sql = "update useroom.usemode set " + c2 + " where roomid = ? and data = ?";
         System.out.println(sql);
         Connection conn = util.getConnection();
         try {

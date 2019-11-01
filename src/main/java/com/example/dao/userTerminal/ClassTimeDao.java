@@ -23,7 +23,7 @@ public class ClassTimeDao {
         System.out.println(c);
 
         String sql2 = c;
-        String sql = "SELECT * FROM UseRoom.classroom WHERE typee = ? and classroom.roomid IN (select roomid from UseRoom.usemode where  data ="+date+sql2+")";
+        String sql = "SELECT * FROM useroom.classroom WHERE typee = ? and classroom.roomid IN (select roomid from useroom.usemode where  data ="+date+sql2+")";
         System.out.println(sql);
         Connection conn = util.getConnection();
         try {

@@ -14,7 +14,7 @@ public class MageDao {
     DBUtil util = new DBUtil();
     public List<Mage> getMassage() {
 
-        String sql = "select * from UseRoom.mage  ";
+        String sql = "select * from useroom.mage  ";
         Connection conn = util.getConnection();
         try {
             PreparedStatement pstmt = conn.prepareStatement(sql);

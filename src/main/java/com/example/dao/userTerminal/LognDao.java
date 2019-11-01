@@ -14,7 +14,7 @@ public class LognDao {
     DBUtil util = new DBUtil();
     public List<Logn> getlogn(String us,String ps) {
 
-        String sql = "select name,department,studentnumber from UseRoom.user where username= ? and password=?";
+        String sql = "select name,department,studentnumber from useroom.user where username= ? and password=?";
         Connection conn = util.getConnection();
         try {
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -39,7 +39,7 @@ public class LognDao {
     }
     public List<Logn> getlognM(String us,String ps) {
 
-        String sql = "select permission,name,department,studentnumber from UseRoom.user where username= ? and password=?";
+        String sql = "select permission,name,department,studentnumber from useroom.user where username= ? and password=?";
         Connection conn = util.getConnection();
         try {
             PreparedStatement pstmt = conn.prepareStatement(sql);

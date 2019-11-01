@@ -10,7 +10,7 @@ public class QuestionDao {
     DBUtil util = new DBUtil();
     public boolean instertQuestion(String qmassage, String quser) {
 
-        String sql = "insert into UseRoom.question (qmassage,quser) values (?,?)";
+        String sql = "insert into useroom.question (qmassage,quser) values (?,?)";
         Connection conn = util.getConnection();
         try {
             PreparedStatement pstmt = conn.prepareStatement(sql);

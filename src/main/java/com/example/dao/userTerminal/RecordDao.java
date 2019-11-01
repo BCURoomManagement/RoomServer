@@ -15,7 +15,7 @@ public class RecordDao {
     DBUtil util = new DBUtil();
 
     public List<Reb> getRecord(String uname) {
-        String sql = "select classroom.* , brecrord.use,phone,data,pass,submission,ftime,ltime,noinf from UseRoom.brecrord,UseRoom.classroom where brecrord.username = ? and classroom.roomid in (select brecrord.roomid from UseRoom.brecrord where brecrord.username = ?) and classroom.roomid = brecrord.roomid order by submission DESC ";
+        String sql = "select classroom.* , brecrord.use,phone,data,pass,submission,ftime,ltime,noinf from useroom.brecrord,useroom.classroom where brecrord.username = ? and classroom.roomid in (select brecrord.roomid from useroom.brecrord where brecrord.username = ?) and classroom.roomid = brecrord.roomid order by submission DESC ";
         Connection conn = util.getConnection();
         try {
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -63,7 +63,7 @@ public class RecordDao {
 
     public boolean instertSubmit(String username, String phone, String use, String data, String a[], String roomid, String pass, String submission,String ftime,String ltime) {
 
-        String sql = "insert into UseRoom.brecrord values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into useroom.brecrord values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection conn = util.getConnection();
         try {
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -107,7 +107,7 @@ public class RecordDao {
 
     public List<ClassTime> gettime(String roomid, String date) {
 
-        String sql = "select roomid,one,two,three,four,five,six,seven,eight,nine,ten,tone,ttwo,tthree,tfour from UseRoom.usemode where roomid = ? and data = ?";
+        String sql = "select roomid,one,two,three,four,five,six,seven,eight,nine,ten,tone,ttwo,tthree,tfour from useroom.usemode where roomid = ? and data = ?";
         System.out.println(sql);
         Connection conn = util.getConnection();
         try {
@@ -146,7 +146,7 @@ public class RecordDao {
 
     public String gettime2(String roomid, String date) {
         String a = "[";
-        String sql = "select roomid,one,two,three,four,five,six,seven,eight,nine,ten,tone,ttwo,tthree,tfour from UseRoom.usemode where roomid = ? and data = ?";
+        String sql = "select roomid,one,two,three,four,five,six,seven,eight,nine,ten,tone,ttwo,tthree,tfour from useroom.usemode where roomid = ? and data = ?";
         System.out.println(sql);
         Connection conn = util.getConnection();
         try {

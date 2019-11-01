@@ -20,7 +20,7 @@ public class CanleDao {
         }
         String c2 = c.substring(3, c.length());
         //System.out.println(c);
-        String sql = "update UseRoom.usemode set " + c2 + " where roomid = ? and data = ?";
+        String sql = "update useroom.usemode set " + c2 + " where roomid = ? and data = ?";
         System.out.print(sql+"cccccc");
         Connection conn = util.getConnection();
         try {
@@ -42,7 +42,7 @@ public class CanleDao {
     }
 
     public boolean dels(String username, String time) {
-        String sql = "delete from UseRoom.brecrord where username = ? and submission = ?";
+        String sql = "delete from useroom.brecrord where username = ? and submission = ?";
         System.out.println(sql);
         Connection conn = util.getConnection();
         try {

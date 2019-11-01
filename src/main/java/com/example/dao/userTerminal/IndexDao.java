@@ -14,7 +14,7 @@ public class IndexDao {
     DBUtil util = new DBUtil();
     public List<Index> getOneRoom(String te) {
 
-        String sql = "select * from UseRoom.classroom where typee= ?  ";
+        String sql = "select * from useroom.classroom where typee= ?  ";
         Connection conn = util.getConnection();
         try {
             PreparedStatement pstmt = conn.prepareStatement(sql);
